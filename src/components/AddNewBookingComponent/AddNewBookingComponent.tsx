@@ -2,6 +2,7 @@ import React, { FunctionComponent, SyntheticEvent, useState } from 'react'
 import { Button, TextField, makeStyles, Theme, createStyles, Typography, Container, Grid, CssBaseline } from '@material-ui/core'
 import { Bookings } from '../../models/Bookings'
 import { addNewBooking } from '../../remote/booking-api/moderatelyokayaddnewbooking'
+import { useParams } from 'react-router';
 //import {MuiPickersUtilsProvider} from '@material-ui/pickers'
 //import DateFnsUtils from '@date-io/date-fns'
 //import {DateTimePicker} from '@material-ui/pickers'
@@ -76,8 +77,8 @@ const useStyles = makeStyles((theme: Theme) =>
         container: {
             display: 'flex',
             flexWrap: 'wrap',
-            marginLeft: theme.spacing(30),
-            marginRight: theme.spacing(30),
+            marginLeft: theme.spacing(10),
+            marginRight: theme.spacing(100),
             alignItems: 'center',
         },
         textField: {
@@ -85,26 +86,28 @@ const useStyles = makeStyles((theme: Theme) =>
             marginRight: theme.spacing(10),
             alignItems: 'center',
             width: 200,
+            align: 'center',
         },
     }),
 );
 export const AddNewBookingComponent: FunctionComponent<any> = () => {
     const classes = useStyles;
-    let [customer, changeCustomer] = useState(0)
+    //let [customer, changeCustomer] = useState(0)
+    const {userId} = useParams()
     let [style, changeStyle] = useState(0)
     let [size, changeSize] = useState('')
     let [location, changeLocation] = useState('')
-    let [imageTest, changeImageTest] = useState('')
+    let [imageTest, changeImageTest] = useState(undefined)
     let [color, changeColor] = useState(false)
     let [artist, changeArtist] = useState(0)
     let [shop, changeShop] = useState(0)
     let [date, changeDate] = useState(new Date())
+    let customer = userId
 
-
-    const updateCustomer = (e: any) => {
-        e.preventDefault()
-        changeCustomer(e.currentTarget.value)
-    }
+    //const updateCustomer = (e: any) => {
+      //  e.preventDefault()
+        //changeCustomer(e.currentTarget.value)
+    //}
     const updateStyle = (e: any) => {
         e.preventDefault()
         changeStyle(e.currentTarget.value)
@@ -118,8 +121,17 @@ export const AddNewBookingComponent: FunctionComponent<any> = () => {
         changeLocation(e.currentTarget.value)
     }
     const updateImageTest = (e: any) => {
-        e.preventDefault()
-        changeImageTest(e.currentTarget.value)
+       let file:File = e.currentTarget.files[0]
+       let reader = new FileReader()
+       
+       reader.readAsDataURL(file)
+
+       reader.onload = (event) =>{
+           changeImageTest(reader.result)
+       }
+
+        //e.preventDefault()
+        //changeImageTest(e.currentTarget.value)
     }
     const updateColor = (e: any) => {
         e.preventDefault()
@@ -141,7 +153,7 @@ export const AddNewBookingComponent: FunctionComponent<any> = () => {
     const submitBooking = async (e: SyntheticEvent) => {
         let newBooking: Bookings = {
             bookingId: 0,
-            customer,
+            customer, //:user.userId,  //:req.user.userId,
             style,
             size,
             location,
@@ -171,15 +183,6 @@ export const AddNewBookingComponent: FunctionComponent<any> = () => {
                 Add New Booking
                 </Typography>
                 <br></br>
-
-                <Grid container>
-                <Grid item>
-                <br></br>
-                <TextField fullWidth  style={{ margin: 10 }} margin="normal" id="standard-basic" label="Customer" value={customer} onChange={updateCustomer} />
-                <br></br>
-                <br></br>
-                </Grid>
-                </Grid>
 
                 <Grid container>
                 <Grid item>
@@ -218,15 +221,21 @@ export const AddNewBookingComponent: FunctionComponent<any> = () => {
                 <Grid container>
                 <Grid item>
                 <br></br>
-                <TextField fullWidth style={{ margin: 10 }} margin="normal" id="standard-basic" label="Location" value={location || ''} onChange={updateLocation} />
+                <TextField fullWidth  id="standard-basic" label="Location" value={location || ''} onChange={updateLocation} />
                 <br></br>
                 </Grid>
                 </Grid>
 
+
                 <Grid container>
                 <Grid item>
                 <br></br>
-                <TextField fullWidth style={{ margin: 10 }} margin="normal" id="standard-basic" label="Image" value={imageTest || ''} onChange={updateImageTest} />
+                <label htmlFor='file'> Tattoo Design Image </label>
+                <br></br>
+                <input type='file' name='file' accept='image/*' onChange={updateImageTest} />
+                <img src={imageTest} width="400" height="400"/>
+                
+                
                 <br></br>
                 </Grid>
                 </Grid>
@@ -305,3 +314,33 @@ export const AddNewBookingComponent: FunctionComponent<any> = () => {
         </Container>
     )
 }
+// class="custom-file-input" 
+//                <TextField fullWidth style={{ margin: 10 }} margin="normal" id="standard-basic" label="Image" value={imageTest || ''} onChange={updateImageTest} />
+
+
+/*
+//first grid
+ <Grid container>
+                <Grid item>
+                <br></br>
+                <TextField fullWidth  style={{ margin: 10 }} margin="normal" id="standard-basic" label="Customer" value={customer} onChange={updateCustomer} />
+                <br></br>
+                <br></br>
+                </Grid>
+                </Grid>
+
+
+*/
+
+//<TitleComponent size='large' title={`Welcome ${props.user.firstName}!`} />
+/*
+                <Grid container>
+                <Grid item>
+                <br></br>
+                <TextField fullWidth  style={{ margin: 10 }} margin="normal" id="standard-basic" label="Customer" value={customer} onChange={updateCustomer} />
+                <br></br>
+                <br></br>
+                </Grid>
+                </Grid>
+
+*/

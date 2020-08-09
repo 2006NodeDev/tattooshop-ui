@@ -148,7 +148,7 @@ export const UpdateBookingComponent: FunctionComponent<any> = (props) => {
               <Grid item xs={12}>
                 <label htmlFor="file">Change Picture</label> <br/>
                 <input type="file" name="file" accept="image/*" onChange={updateImage} />
-                <img src={imageTest} width="100%"/>
+                <img src={imageTest} width="400" height="400"/>
               </Grid>
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -156,7 +156,7 @@ export const UpdateBookingComponent: FunctionComponent<any> = (props) => {
                   variant="filled"
                   fullWidth
                   id="color"
-                  label="Change Color"
+                  label="Change Color Preference"
                   name="color"
                   value={color}
                   onChange={updateColor}
@@ -174,7 +174,7 @@ export const UpdateBookingComponent: FunctionComponent<any> = (props) => {
                   variant="filled"
                   fullWidth
                   id="date"
-                  label="Change Date"
+                  label="Change Appointment Date"
                   name="date"
                   value={date}
                   onChange={updateDate}

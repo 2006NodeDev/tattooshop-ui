@@ -68,7 +68,7 @@ export const LoginComponent:FunctionComponent<ILoginProps> =(props) =>{
         let res = await modokaylogin(username, password)
         props.changeCurrentUser(res)
         changePassword('')
-        props.history.push(`/profile/${res.userId}`)
+        //props.history.push(`/profile/${res.userId}`)
 
     }
     const preventDefault = (e:SyntheticEvent)=>{

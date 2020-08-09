@@ -5,7 +5,7 @@ import { Bookings } from "../../models/Bookings";
 
 export const addNewBooking = async (newBookings:Bookings) =>{
     try{
-        let response = await bookingClient.post('/bookings', newBookings)
+        let response = await bookingClient.post('/bookings/newbooking', newBookings)
         console.log(response);
         return response.data
     }catch(e){
