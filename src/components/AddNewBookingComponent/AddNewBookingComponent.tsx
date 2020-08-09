@@ -93,7 +93,7 @@ const useStyles = makeStyles((theme: Theme) =>
 export const AddNewBookingComponent: FunctionComponent<any> = () => {
     const classes = useStyles;
     //let [customer, changeCustomer] = useState(0)
-    const {userId} = useParams()
+    const {customer} = useParams()
     let [style, changeStyle] = useState(0)
     let [size, changeSize] = useState('')
     let [location, changeLocation] = useState('')
@@ -102,7 +102,7 @@ export const AddNewBookingComponent: FunctionComponent<any> = () => {
     let [artist, changeArtist] = useState(0)
     let [shop, changeShop] = useState(0)
     let [date, changeDate] = useState(new Date())
-    let customer = userId
+   // let customer = userId
 
     //const updateCustomer = (e: any) => {
       //  e.preventDefault()
@@ -151,9 +151,11 @@ export const AddNewBookingComponent: FunctionComponent<any> = () => {
     }
 
     const submitBooking = async (e: SyntheticEvent) => {
+       // e.preventDefault()
+        
         let newBooking: Bookings = {
             bookingId: 0,
-            customer, //:user.userId,  //:req.user.userId,
+            customer, //: props.user.userId,  //:req.user.userId,
             style,
             size,
             location,
@@ -163,7 +165,6 @@ export const AddNewBookingComponent: FunctionComponent<any> = () => {
             shop,
             date
         }
-
         let res = await addNewBooking(newBooking)
     }
 

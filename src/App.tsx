@@ -26,9 +26,9 @@ function App() {
       <NavBarComponent user={currentUser}/>
         <Route exact path='/' component={HomepageComponent} />
         <Route path='/login' render={(props)=>(<LoginComponent changeCurrentUser={changeCurrentUser} {...props} />)} />
-        <Route path='/signup' render={()=>(<SignUpComponent/>)} />
+        <Route path='/signup' component={SignUpComponent} />
         <Route path='/profile/:userId' component={ProfileComponent}/>
-        <Route path='/addnewbooking' component={AddNewBookingComponent}/>
+        <Route path='/addnewbooking' component={AddNewBookingComponent}/>        
         <Route path='/updatebooking' component={UpdateBookingComponent}/>
         <Route path='/allbookings' component={AllBookingsComponent}/>
         <Route path='/edituser' component={UpdateUserComponent}/>
@@ -40,3 +40,6 @@ function App() {
 }
 
 export default App;
+//       // <Route path='/addnewbooking' component={AddNewBookingComponent}/>
+//        <Route path='/addnewbooking' render={(props)=>(<AddNewBookingComponent changeCurrentUser={changeCurrentUser} {...props} />)} />
+
