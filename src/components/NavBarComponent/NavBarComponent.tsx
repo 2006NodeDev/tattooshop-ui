@@ -8,7 +8,7 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
 import MenuIcon from '@material-ui/icons/Menu'
-import { Link } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 //JSS 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -41,18 +41,32 @@ export const NavBarComponent: FunctionComponent<any> = (props) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
+    
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
+   setAnchorEl(event.currentTarget);
   };
+  //const handleClick = (event: any) => {
+    //setAnchorEl(event.currentTarget);
+  //};
+
+
   const handleClose = () => {
     setAnchorEl(null);
   }
-
+//if (props.user && props.user.role.role === 'SiteMember'){
   let menuItems = []
+
+  menuItems.push(<MenuItem onClick={handleClose}><Link to='/'>Home</Link></MenuItem>)
   menuItems.push(<MenuItem onClick={handleClose}><Link to='/login'>Login</Link></MenuItem>)
   menuItems.push(<MenuItem onClick={handleClose}><Link to='/signup'>Sign Up</Link></MenuItem>)
   if (props.user) {
     menuItems.push(<MenuItem onClick={handleClose}><Link to={`/profile/${(props.user) ? props.user.userId : '0'}`}>My Profile</Link></MenuItem>)
+    menuItems.push(<MenuItem onClick={handleClose}><Link to='/edituser'> Edit User </Link></MenuItem>)
+    menuItems.push(<MenuItem onClick={handleClose}><Link to='/addnewbooking'> Add New Booking </Link></MenuItem>)
+    menuItems.push(<MenuItem onClick={handleClose}><Link to='/updatebooking'> Update Booking </Link></MenuItem>)
+    menuItems.push(<MenuItem onClick={handleClose}><Link to='/allbookings'> All Bookings </Link></MenuItem>)
+    menuItems.push(<MenuItem onClick={handleClose}><Link to='/shops'> Shops </Link></MenuItem>)
+
   }
 
   return (
