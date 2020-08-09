@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import { User } from '../../models/User'
 import {UserDisplayComponent} from '../UserDisplayComponent/UserDisplayComponent'
-import { getAllArtistsService } from '../../remote/moderatelyokay-api/moderatelyokaygetallartists'
+import { getAllArtistsService } from '../../remote/user-api/moderatelyokaygetallartists'
 
 
 export const AllArtistsComponent:FunctionComponent<any> = (props) => {

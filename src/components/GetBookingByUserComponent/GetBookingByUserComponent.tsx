@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState, useEffect } from 'react'
 import { Bookings } from '../../models/Bookings'
-import { findBookingByUserId } from '../../remote/moderatelyokay-api/moderatelyokaygetbookingbyuser'
+import { findBookingByUserId } from '../../remote/booking-api/moderatelyokaygetbookingbyuser'
 import { BookingDisplayComponent } from '../BookingDisplayComponent/BookingDisplayComponent'
 
 //double check me on this one for sure

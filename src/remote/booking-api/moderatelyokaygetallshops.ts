@@ -1,11 +1,11 @@
-import { modokayClient } from "."
+import { bookingClient } from "."
 
 
 
 export const getAllShops = async () =>{
 
     try{
-        let response = await modokayClient.get(`/bookings/shops`)
+        let response = await bookingClient.get(`/bookings/shops`)
         return response.data
     } catch(e){
         console.log(e);

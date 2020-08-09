@@ -8,7 +8,7 @@ import {BrowserRouter as Router,Route} from 'react-router-dom'
 import { AddNewBookingComponent } from './components/AddNewBookingComponent/AddNewBookingComponent';
 import { User } from './models/User';
 import { UpdateUserComponent } from './components/UpdateUserComponent/UpdateUserComponent';
-import { GetAllShopsComponent } from './components/GetAllShops/GetAllShops';
+import {AllShopsComponent } from './components/GetAllShopsComponent/GetAllShopsComponent';
 
 
 //add new booking is there for testing, it does not have to stay there or even keep the same path.
@@ -23,7 +23,7 @@ function App() {
         <Route path='/profile/:userId' component={ProfileComponent}/>
         <Route path='/addnewbooking' component={AddNewBookingComponent}/>
         <Route path='/edituser' component={UpdateUserComponent}/>
-        <Route path='/shops' component={GetAllShopsComponent}/>
+        <Route path='/shops' component={AllShopsComponent}/>
       </Router>
     </div>
   );
