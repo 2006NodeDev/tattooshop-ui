@@ -9,6 +9,7 @@ import { AddNewBookingComponent } from './components/AddNewBookingComponent/AddN
 import { User } from './models/User';
 import { UpdateUserComponent } from './components/UpdateUserComponent/UpdateUserComponent';
 import {AllShopsComponent } from './components/GetAllShopsComponent/GetAllShopsComponent';
+import {MapsComponent} from './components/MapsComponent/MapsComponent'
 
 
 //add new booking is there for testing, it does not have to stay there or even keep the same path.
@@ -24,6 +25,7 @@ function App() {
         <Route path='/addnewbooking' component={AddNewBookingComponent}/>
         <Route path='/edituser' component={UpdateUserComponent}/>
         <Route path='/shops' component={AllShopsComponent}/>
+        <Route path='/map' component={MapsComponent}/>
       </Router>
     </div>
   );
