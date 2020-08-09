@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import { User } from '../../models/User'
-import { getAllUsers } from '../../remote/moderatelyokay-api/moderatelyokaygetallusers'
+import { getAllUsers } from '../../remote/user-api/moderatelyokaygetallusers'
 import {UserDisplayComponent} from '../UserDisplayComponent/UserDisplayComponent'
 
 

@@ -1,11 +1,11 @@
-import { modokayClient } from "."
+import { bookingClient } from "."
 
 
 
 export const findBookingByArtistService = async (userId:number) =>{
 
     try{
-        let response = await modokayClient.get(`/artist/${userId}`)
+        let response = await bookingClient.get(`/artist/${userId}`)
         return response.data
     } catch(e){
         console.log(e);

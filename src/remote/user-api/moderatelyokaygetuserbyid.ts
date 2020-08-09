@@ -1,11 +1,11 @@
-import { modokayClient } from "."
+import { userClient } from "../user-api"
 
 
 
 export const findUserByIdService = async (userId:number) =>{
 
     try{
-        let response = await modokayClient.get(`users/${userId}`)
+        let response = await userClient.get(`users/${userId}`)
         return response.data
     } catch(e){
         console.log(e);

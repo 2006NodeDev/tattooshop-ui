@@ -2,7 +2,7 @@ import React, { FunctionComponent, useState, useEffect } from 'react';
 import { UserDisplayComponent } from '../UserDisplayComponent/UserDisplayComponent';
 import { User } from '../../models/User';
 import { useParams} from 'react-router-dom';
-import { findUserByIdService } from '../../remote/moderatelyokay-api/moderatelyokaygetuserbyid';
+import { findUserByIdService } from '../../remote/user-api/moderatelyokaygetuserbyid';
 
 
 

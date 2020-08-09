@@ -2,7 +2,7 @@ import React, { FunctionComponent, SyntheticEvent, useState } from 'react'
 import { Button, TextField, Container, CssBaseline, Typography, Grid, withStyles, makeStyles } from '@material-ui/core'
 import { User } from '../../models/User'
 import { useParams } from 'react-router'
-import { modOkayUpdateUser } from '../../remote/moderatelyokay-api/moderatelyokayupdateuser'
+import { modOkayUpdateUser } from '../../remote/user-api/moderatelyokayupdateuser'
 
 //This is ripped off of my (Amanda) project 1, we can change the way it looks and the layout later if we want
 

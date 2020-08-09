@@ -2,7 +2,7 @@ import React, { FunctionComponent, useState, SyntheticEvent } from 'react'
 import { Button, TextField, Container, CssBaseline, Typography, Grid, withStyles, makeStyles } from '@material-ui/core'
 import { useParams } from 'react-router-dom';
 import { Bookings } from '../../models/Bookings';
-import { modOkayUpdateBookings } from '../../remote/moderatelyokay-api/moderatelyokayupdatebooking';
+import { modOkayUpdateBookings } from '../../remote/booking-api/moderatelyokayupdatebooking';
 
 
 //This is ripped off of my (Amanda) project 1, we can change the way it looks and the layout later if we want

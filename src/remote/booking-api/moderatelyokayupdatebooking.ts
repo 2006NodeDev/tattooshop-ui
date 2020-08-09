@@ -1,4 +1,4 @@
-import { modokayClient} from ".";
+import { bookingClient} from ".";
 import { Bookings } from "../../models/Bookings"
 
 
@@ -6,7 +6,7 @@ import { Bookings } from "../../models/Bookings"
 export const modOkayUpdateBookings = async (updatedBookings:Bookings) =>{
     try{
         console.log(updatedBookings);
-        let response = await modokayClient.patch('/bookings', updatedBookings)
+        let response = await bookingClient.patch('/bookings', updatedBookings)
         console.log(response);
         return response.data
     }catch(e){

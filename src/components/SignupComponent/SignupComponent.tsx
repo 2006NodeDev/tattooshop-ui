@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState, SyntheticEvent } from 'react'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
-import { modokaysignup } from '../../remote/moderatelyokay-api/moderatelyokaysignup'
+import { modokaysignup } from '../../remote/user-api/moderatelyokaysignup'
 import { User } from '../../models/User'
 import { Typography } from '@material-ui/core'
 //import classes from '*.module.css'

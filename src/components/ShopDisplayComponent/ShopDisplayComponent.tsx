@@ -1,16 +1,14 @@
 import React, { FunctionComponent } from 'react'
 import Typography from '@material-ui/core/Typography'
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button'
 import { CardContent, Card } from '@material-ui/core';
-import { Link, Route } from 'react-router-dom';
 import { Shop } from '../../models/Shops';
 
 
 //I (Amanda) stole this from my project 1, so we can change it however we want
 
 interface IShopDisplayProps {
-  shop: Shop
+  shop:Shop
 }
 
 
