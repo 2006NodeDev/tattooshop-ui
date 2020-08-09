@@ -4,8 +4,16 @@ import Marker from './Marker';
 
 
 export const MapsComponent: FunctionComponent<any> = (props) => {
+  const mapOptions = (maps: any) =>{
+    return{
+      options: {
+      gestureHandling: 'greedy'
+      }
+      
+    }
+  }
   const [center, setCenter] = useState({ lat: 39.809860, lng: -98.555183 });
-  const [zoom, setZoom] = useState(11);
+  const [zoom, setZoom] = useState(5);
   return (
     <div style={{ height: '100vh', width: '100%' }}>
       <GoogleMapReact
