@@ -20,11 +20,8 @@
     "axios": "^0.19.2",
     "date-fns": "^2.15.0",
     "formik": "^2.1.5",
-<<<<<<< HEAD
-=======
     "google-distance-matrix": "^1.1.1",
     "google-map-react": "^2.0.8",
->>>>>>> db2f76a10eb43db90c98f15f7d62e388aa470953
     "nodemon": "^2.0.4",
     "react": "^16.13.1",
     "react-css-modules": "^4.7.11",
