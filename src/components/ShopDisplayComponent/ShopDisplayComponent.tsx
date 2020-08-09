@@ -1,45 +1,37 @@
-import React, { FunctionComponent } from 'react'
-import Typography from '@material-ui/core/Typography'
-import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
-import { CardContent, Card } from '@material-ui/core';
+import React, { FunctionComponent } from 'react';
+import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
 import { Shop } from '../../models/Shops';
+import { Typography } from '@material-ui/core';
 
-
-//I (Amanda) stole this from my project 1, so we can change it however we want
 
 interface IShopDisplayProps {
   shop:Shop
 }
 
-
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      justifyContent: "center",
-      display: 'flex',
-      flexWrap: 'wrap',
-      '& > *': {
-        margin: theme.spacing(1),
-        width: theme.spacing(20),
-        height: theme.spacing(17),
-      },
+      flexGrow: 1,
     },
-    card: {
-      backgroundColor: 'grey'
-    }
+    paper: {
+      padding: theme.spacing(2),
+      textAlign: 'center',
+      color: theme.palette.text.secondary,
+    },
   }),
 );
 
-
-
-
 export const ShopDisplayComponent: FunctionComponent<IShopDisplayProps> = (props) => {
-  let classes = useStyles()
+  const classes = useStyles();
+
   return (
-    <div>
-      <Card className={classes.root}>
-        <CardContent>
-        <Typography variant='body1'>
+    <div className={classes.root}>
+      <Grid container spacing={3}>
+        <Grid item xs>
+          <Paper>
+          <Typography variant='body1'>
             Shop ID : {props.shop.shopId}
           </Typography>
           <Typography variant='body1'>
@@ -66,8 +58,9 @@ export const ShopDisplayComponent: FunctionComponent<IShopDisplayProps> = (props
           <Typography variant='body1'>
             Close at : {props.shop.closeAt}
           </Typography>
-        </CardContent>
-      </Card>
+          </Paper>
+        </Grid>
+      </Grid>
     </div>
-  )
+  );
 }
