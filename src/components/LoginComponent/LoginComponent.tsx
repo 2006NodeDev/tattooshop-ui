@@ -1,7 +1,7 @@
 import React, {FunctionComponent, useState, SyntheticEvent} from 'react'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
-import {modokaylogin} from '../../remote/moderatelyokay-api/moderatelyokaylogin'
+import {modokaylogin} from '../../remote/user-api/moderatelyokaylogin'
 import { RouteComponentProps } from 'react-router'
 import { makeStyles, Theme, createStyles, Container, CssBaseline, Typography, Grid, Link, Avatar } from '@material-ui/core'
 //import Avatar from '@material-ui/core/Avatar';

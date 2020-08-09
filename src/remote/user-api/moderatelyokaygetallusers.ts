@@ -1,9 +1,9 @@
-import { modokayClient } from ".";
+import { userClient } from "../user-api";
 
 
 export const getAllUsers = async () =>{
     try{
-        let response = await modokayClient.get('/users')
+        let response = await userClient.get('/users')
         return response.data
     }catch(e){
         console.log(e);

@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import { findUserByIdService } from '../../remote/moderatelyokay-api/moderatelyokaygetuserbyid'
+import { findUserByIdService } from '../../remote/user-api/moderatelyokaygetuserbyid'
 import { User } from '../../models/User'
 import { UserDisplayComponent } from '../UserDisplayComponent/UserDisplayComponent'
 

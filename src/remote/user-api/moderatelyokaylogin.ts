@@ -1,4 +1,4 @@
-import {modokayClient} from '.'
+import {userClient} from '../user-api'
 
 
 export const modokaylogin = async (username:string, password:string) => {
@@ -7,10 +7,10 @@ export const modokaylogin = async (username:string, password:string) => {
         password
     }
     try{
-        let response = await modokayClient.post('/login', credentials)
+        let response = await userClient.post('/login', credentials)
         console.log(response);
         // for token 
-        modokayClient.defaults.headers.common['Authorization'] = response.headers.authorization
+        userClient.defaults.headers.common['Authorization'] = response.headers.authorization
         document.cookie = `token=${response.headers.authorization}` // we store token 
 
         return response.data //should be the user object

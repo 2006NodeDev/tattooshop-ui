@@ -1,9 +1,9 @@
-import { modokayClient } from ".";
+import { bookingClient } from ".";
 
 
 export const getAllBookings = async () =>{
     try{
-        let response = await modokayClient.get('/bookings')
+        let response = await bookingClient.get('/bookings')
         return response.data
     }catch(e){
         console.log(e);

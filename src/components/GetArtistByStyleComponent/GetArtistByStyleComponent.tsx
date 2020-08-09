@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState, useEffect } from 'react'
 import { User } from '../../models/User'
-import {getArtistByStyleService} from '../../remote/moderatelyokay-api/moderatelyokaygetartistbystyle'
+import {getArtistByStyleService} from '../../remote/user-api/moderatelyokaygetartistbystyle'
 import { UserDisplayComponent } from '../UserDisplayComponent/UserDisplayComponent'
 
 export const GetArtistByStyleComponent:FunctionComponent<any> = (props) => {

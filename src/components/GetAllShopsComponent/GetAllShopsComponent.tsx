@@ -1,10 +1,10 @@
 import React, { FunctionComponent, useState, useEffect } from 'react'
 import { Shop } from '../../models/Shops'
 import {ShopDisplayComponent} from '../ShopDisplayComponent/ShopDisplayComponent'
-import { getAllShops } from '../../remote/moderatelyokay-api/moderatelyokaygetallshops'
+import { getAllShops } from '../../remote/booking-api/moderatelyokaygetallshops'
 
 
-export const GetAllShopsComponent:FunctionComponent<any> = (props) => {
+export const AllShopsComponent:FunctionComponent<any> = (props) => {
 
  
     let [allShops, changeAllShops] = useState<Shop[]>([])
@@ -19,13 +19,13 @@ export const GetAllShopsComponent:FunctionComponent<any> = (props) => {
         }
     })
 
-    let getAllShopsDisplay = allShops.map((shop)=>{
+    let shopsDisplays = allShops.map((shop)=>{
         return <ShopDisplayComponent key={'shop-key-' + shop.shopId} shop={shop}/>
     })
     return(
 
         <div>
-            {getAllShopsDisplay}
+            {shopsDisplays}
         </div>
     )
 }
