@@ -71,7 +71,7 @@ export const NavBarComponent: FunctionComponent<any> = (props) => {
 
   return (
     <nav>
-      <AppBar position="static">
+      <AppBar position="static" style={{background: '#8B0000'}}>
         <Toolbar>
           <IconButton onClick={handleClick} edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
            <MenuIcon/>
