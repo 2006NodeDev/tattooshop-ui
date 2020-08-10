@@ -3,9 +3,7 @@ import { Button, TextField, makeStyles, Theme, createStyles, Typography, Contain
 import { Bookings } from '../../models/Bookings'
 import { addNewBooking } from '../../remote/booking-api/moderatelyokayaddnewbooking'
 import { useParams } from 'react-router';
-//import {MuiPickersUtilsProvider} from '@material-ui/pickers'
-//import DateFnsUtils from '@date-io/date-fns'
-//import {DateTimePicker} from '@material-ui/pickers'
+
 
 
 const styles = [
@@ -92,8 +90,8 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 export const AddNewBookingComponent: FunctionComponent<any> = () => {
     const classes = useStyles;
-    //let [customer, changeCustomer] = useState(0)
-    const {userId} = useParams()
+
+    let [customer, changeCustomer] = useState(0)
     let [style, changeStyle] = useState(0)
     let [size, changeSize] = useState('')
     let [location, changeLocation] = useState('')
@@ -102,12 +100,12 @@ export const AddNewBookingComponent: FunctionComponent<any> = () => {
     let [artist, changeArtist] = useState(0)
     let [shop, changeShop] = useState(0)
     let [date, changeDate] = useState(new Date())
-    let customer = userId
 
-    //const updateCustomer = (e: any) => {
-      //  e.preventDefault()
-        //changeCustomer(e.currentTarget.value)
-    //}
+
+    const updateCustomer = (e: any) => {
+        e.preventDefault()
+        changeCustomer(e.currentTarget.value)
+    }
     const updateStyle = (e: any) => {
         e.preventDefault()
         changeStyle(e.currentTarget.value)
@@ -167,12 +165,7 @@ export const AddNewBookingComponent: FunctionComponent<any> = () => {
         let res = await addNewBooking(newBooking)
     }
 
-    //check this, I don't know if it's right
-    //customer, artist not null
-    //everything else is optional
-    //Customer, Style, Artist, Shop are all ID, Maybe do a drop down menu so they don't have to know the # ?
-    //style and color are drop down to make it easier
-    //date is in the wrong format and I'm not sure how to fix it
+
     return (
         <Container component="main" maxWidth="xs">
         <CssBaseline/>
@@ -187,6 +180,13 @@ export const AddNewBookingComponent: FunctionComponent<any> = () => {
                 <Grid container>
                 <Grid item>
                 <br></br>
+                <TextField fullWidth style={{ margin: 10 }} margin="normal" id="standard-basic" label="User ID" value={customer} onChange={updateCustomer} />
+                <br></br>
+                </Grid>
+                </Grid>
+
+                <Grid container>
+                <Grid item>
                 <TextField
                     id="outlined-select-currency-native"
                     select
