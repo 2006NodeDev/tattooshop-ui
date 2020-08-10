@@ -2,9 +2,8 @@ import React, { FunctionComponent, SyntheticEvent, useState } from 'react'
 import { Button, TextField, makeStyles, Theme, createStyles, Typography, Container, Grid, CssBaseline } from '@material-ui/core'
 import { Bookings } from '../../models/Bookings'
 import { addNewBooking } from '../../remote/booking-api/moderatelyokayaddnewbooking'
-//import {MuiPickersUtilsProvider} from '@material-ui/pickers'
-//import DateFnsUtils from '@date-io/date-fns'
-//import {DateTimePicker} from '@material-ui/pickers'
+import { useParams } from 'react-router';
+
 
 
 const styles = [
@@ -76,8 +75,8 @@ const useStyles = makeStyles((theme: Theme) =>
         container: {
             display: 'flex',
             flexWrap: 'wrap',
-            marginLeft: theme.spacing(30),
-            marginRight: theme.spacing(30),
+            marginLeft: theme.spacing(10),
+            marginRight: theme.spacing(100),
             alignItems: 'center',
         },
         textField: {
@@ -85,16 +84,18 @@ const useStyles = makeStyles((theme: Theme) =>
             marginRight: theme.spacing(10),
             alignItems: 'center',
             width: 200,
+            align: 'center',
         },
     }),
 );
 export const AddNewBookingComponent: FunctionComponent<any> = () => {
     const classes = useStyles;
+
     let [customer, changeCustomer] = useState(0)
     let [style, changeStyle] = useState(0)
     let [size, changeSize] = useState('')
     let [location, changeLocation] = useState('')
-    let [imageTest, changeImageTest] = useState('')
+    let [imageTest, changeImageTest] = useState(undefined)
     let [color, changeColor] = useState(false)
     let [artist, changeArtist] = useState(0)
     let [shop, changeShop] = useState(0)
@@ -118,8 +119,17 @@ export const AddNewBookingComponent: FunctionComponent<any> = () => {
         changeLocation(e.currentTarget.value)
     }
     const updateImageTest = (e: any) => {
-        e.preventDefault()
-        changeImageTest(e.currentTarget.value)
+       let file:File = e.currentTarget.files[0]
+       let reader = new FileReader()
+       
+       reader.readAsDataURL(file)
+
+       reader.onload = (event) =>{
+           changeImageTest(reader.result)
+       }
+
+        //e.preventDefault()
+        //changeImageTest(e.currentTarget.value)
     }
     const updateColor = (e: any) => {
         e.preventDefault()
@@ -139,9 +149,11 @@ export const AddNewBookingComponent: FunctionComponent<any> = () => {
     }
 
     const submitBooking = async (e: SyntheticEvent) => {
+       // e.preventDefault()
+        
         let newBooking: Bookings = {
             bookingId: 0,
-            customer,
+            customer, //: props.user.userId,  //:req.user.userId,
             style,
             size,
             location,
@@ -151,16 +163,10 @@ export const AddNewBookingComponent: FunctionComponent<any> = () => {
             shop,
             date
         }
-
         let res = await addNewBooking(newBooking)
     }
 
-    //check this, I don't know if it's right
-    //customer, artist not null
-    //everything else is optional
-    //Customer, Style, Artist, Shop are all ID, Maybe do a drop down menu so they don't have to know the # ?
-    //style and color are drop down to make it easier
-    //date is in the wrong format and I'm not sure how to fix it
+
     return (
         <Container component="main" maxWidth="xs">
         <CssBaseline/>
@@ -175,15 +181,13 @@ export const AddNewBookingComponent: FunctionComponent<any> = () => {
                 <Grid container>
                 <Grid item>
                 <br></br>
-                <TextField fullWidth  style={{ margin: 10 }} margin="normal" id="standard-basic" label="Customer" value={customer} onChange={updateCustomer} />
-                <br></br>
+                <TextField fullWidth style={{ margin: 10 }} margin="normal" id="standard-basic" label="User ID" value={customer} onChange={updateCustomer} />
                 <br></br>
                 </Grid>
                 </Grid>
 
                 <Grid container>
                 <Grid item>
-                <br></br>
                 <TextField
                     id="outlined-select-currency-native"
                     select
@@ -218,15 +222,21 @@ export const AddNewBookingComponent: FunctionComponent<any> = () => {
                 <Grid container>
                 <Grid item>
                 <br></br>
-                <TextField fullWidth style={{ margin: 10 }} margin="normal" id="standard-basic" label="Location" value={location || ''} onChange={updateLocation} />
+                <TextField fullWidth  id="standard-basic" label="Location" value={location || ''} onChange={updateLocation} />
                 <br></br>
                 </Grid>
                 </Grid>
 
+
                 <Grid container>
                 <Grid item>
                 <br></br>
-                <TextField fullWidth style={{ margin: 10 }} margin="normal" id="standard-basic" label="Image" value={imageTest || ''} onChange={updateImageTest} />
+                <label htmlFor='file'> Tattoo Design Image </label>
+                <br></br>
+                <input type='file' name='file' accept='image/*' onChange={updateImageTest} />
+                <img src={imageTest} width="400" height="400"/>
+                
+                
                 <br></br>
                 </Grid>
                 </Grid>
@@ -305,3 +315,33 @@ export const AddNewBookingComponent: FunctionComponent<any> = () => {
         </Container>
     )
 }
+// class="custom-file-input" 
+//                <TextField fullWidth style={{ margin: 10 }} margin="normal" id="standard-basic" label="Image" value={imageTest || ''} onChange={updateImageTest} />
+
+
+/*
+//first grid
+ <Grid container>
+                <Grid item>
+                <br></br>
+                <TextField fullWidth  style={{ margin: 10 }} margin="normal" id="standard-basic" label="Customer" value={customer} onChange={updateCustomer} />
+                <br></br>
+                <br></br>
+                </Grid>
+                </Grid>
+
+
+*/
+
+//<TitleComponent size='large' title={`Welcome ${props.user.firstName}!`} />
+/*
+                <Grid container>
+                <Grid item>
+                <br></br>
+                <TextField fullWidth  style={{ margin: 10 }} margin="normal" id="standard-basic" label="Customer" value={customer} onChange={updateCustomer} />
+                <br></br>
+                <br></br>
+                </Grid>
+                </Grid>
+
+*/
