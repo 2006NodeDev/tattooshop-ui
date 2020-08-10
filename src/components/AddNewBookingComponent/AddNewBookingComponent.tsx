@@ -149,9 +149,11 @@ export const AddNewBookingComponent: FunctionComponent<any> = () => {
     }
 
     const submitBooking = async (e: SyntheticEvent) => {
+       // e.preventDefault()
+        
         let newBooking: Bookings = {
             bookingId: 0,
-            customer, //:user.userId,  //:req.user.userId,
+            customer, //: props.user.userId,  //:req.user.userId,
             style,
             size,
             location,
@@ -161,7 +163,6 @@ export const AddNewBookingComponent: FunctionComponent<any> = () => {
             shop,
             date
         }
-
         let res = await addNewBooking(newBooking)
     }
 

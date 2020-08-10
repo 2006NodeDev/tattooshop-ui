@@ -40,7 +40,6 @@ const useStyles = makeStyles((theme: Theme) =>
 export const NavBarComponent: FunctionComponent<any> = (props) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-
     
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
    setAnchorEl(event.currentTarget);
@@ -62,11 +61,17 @@ export const NavBarComponent: FunctionComponent<any> = (props) => {
   if (props.user) {
     menuItems.push(<MenuItem onClick={handleClose}><Link to={`/profile/${(props.user) ? props.user.userId : '0'}`}>My Profile</Link></MenuItem>)
     menuItems.push(<MenuItem onClick={handleClose}><Link to='/edituser'> Edit User </Link></MenuItem>)
-    menuItems.push(<MenuItem onClick={handleClose}><Link to='/addnewbooking'> Add New Booking </Link></MenuItem>)
-    menuItems.push(<MenuItem onClick={handleClose}><Link to='/updatebooking'> Update Booking </Link></MenuItem>)
-    menuItems.push(<MenuItem onClick={handleClose}><Link to='/allbookings'> All Bookings </Link></MenuItem>)
     menuItems.push(<MenuItem onClick={handleClose}><Link to='/shops'> Shops </Link></MenuItem>)
-
+  }
+  if (props.user && props.user.role === 'customer') {
+  menuItems.push(<MenuItem onClick={handleClose}><Link to='/addnewbooking'> Add New Booking </Link></MenuItem>)
+  menuItems.push(<MenuItem onClick={handleClose}><Link to='/updatebooking'> Update Booking </Link></MenuItem>)
+  }
+  if (props.user &&props.user.role === 'admin') {
+    menuItems.push(<MenuItem onClick={handleClose}><Link to='/allbookings'> All Bookings </Link></MenuItem>)
+  }
+  if (props.user &&props.user.role === 'artist') {
+    menuItems.push(<MenuItem onClick={handleClose}><Link to='/allbookings'> All Bookings </Link></MenuItem>)
   }
 
   return (
